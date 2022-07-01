@@ -27,6 +27,7 @@ printFullName.apply(name2,['kadiri']);
 let copyPrintFullName = printFullName.bind(name2,'kadiri');
 copyPrintFullName();
 
-//Bind: it is different from call where it create a copy of the
-//object and bind the given function to it and return that copy to
-//to declared variable
+/*
+Bind: it gives the copy of the method with the context of the given object and provides us a 
+flexibility to call the function any where in the code
+*/
