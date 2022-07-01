@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<input type="text"  value="" id="input"/>
+</body>
+<script lang="js">
+let betterHandleChange = throttle(handleChange,300);
+let inp = document.querySelector('#input');
+inp.addEventListener('input',betterHandleChange);
+
+function handleChange(e){
+  console.log( e.target.value)
+}
+
+function throttle(fn,delay){
+  let flag = true;
+  return function(...args){
+    if(flag){
+    flag = false;
+    fn.apply(this,args);
+    setTimeout(() => flag = true,delay)
+  }
+ }
+}
+</script>
+</html>
