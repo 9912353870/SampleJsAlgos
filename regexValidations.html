@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RegEx Form</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>New User Signup</h1>
+        <form>
+
+            <input type="text" name="username" placeholder="username">
+            <p>Username must be  and contain 5 - 12 characters</p>
+
+            <input type="text" name="email" placeholder="email">
+            <p>Email must be a valid address, e.g. me@mydomain.com</p>
+
+            <input type="text" name="password" placeholder="password">
+            <p>Password must alphanumeric (@, _ and - are also allowed) and be 8 - 20 characters</p>
+
+            <input type="text" name="telephone" placeholder="telephone">
+            <p>Telephone must be a valid UK telephone number (11 digits)</p>
+
+            <input type="text" name="slug" placeholder="profile slug">
+            <p>Slug must contain only lowercase letters, numbers and hyphens and be 8 - 20 characters</p>
+
+        </form>
+        <script>
+          const ele = document.querySelectorAll('input');
+
+ele.forEach(inp => {
+  inp.addEventListener("keyup", (e) => {
+     let regex;
+     if(e.target.name === 'telephone'){
+       regex = /^\d{10}$/g;
+     }
+    if(e.target.name === 'username'){
+      regex = /^\w{5,12}$/g; 
+    }
+    if(e.target.name === 'email'){
+      regex = /^([\w\-\.]+)@([a-z\-]+)\.([a-zA-z]{2,8})(\.[a-zA-Z]{2,8})?$/g;
+    }
+    if(e.target.name === 'password'){
+      regex = /^[a-zA-Z0-9@_]{8,20}$/g;
+    }
+    
+    if(e.target.name === 'slug'){
+     regex = /^[a-z0-9-]{8,20}$/g; 
+    }
+     console.log(regex.test(e.target.value));
+  })
+});
+      </script>
+    </body>
+</html>
